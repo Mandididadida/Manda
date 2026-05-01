@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Playpen+Sans&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <title>Page Layout</title>
+</head>
+<body>
+    <header>
+        <h1>Page Layout</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">HTML Basics</a></li>
+            <li><a href="cssbasics.html">CSS Basics</a></li>
+            <li><a href="layout.html">Page Layout</a></li>
+            <li><a href="responsive.html">Responsive Design</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <article>
+            <h2>Structure, Phrasing and Display</h2>
+            <p>
+                In HTML, structural elements are usually block elements that help organize the main parts of a page. Examples include header, main, section, article, and footer. These elements usually start on a new line and take up the full available width. Phrasing elements are usually inline elements that appear inside text, such as strong, em, span, and a. These do not normally start on a new line, and they only take up as much space as they need.
+            </p>
+            <p>
+                The CSS display property controls how an element appears on the page. For example, block makes an element behave like a block, inline keeps it inside the text flow, and inline-block allows it to stay inline while still accepting width and height. Other useful values include none, which hides an element, and flex, which is often used to build layouts by arranging items in rows or columns. Changing display makes it possible to turn inline elements into blocks, line blocks into flex containers, and generally control layout more precisely.
+            </p>
+        </article>
+
+        <article>
+            <h2>Box Model</h2>
+            <p>
+                The CSS box model describes how every block element is built from several layers. At the center is the content area, which holds the text or image. Around that is padding, which adds space inside the element between the content and the border. The border wraps around the padding and content, and outside of that is the margin, which creates space between the element and surrounding elements.
+            </p>
+            <p>
+                The box model affects the total size of an element. By default, the width property only controls the content area, so adding padding and borders makes the full box larger than the set width. The box-sizing property can change this behavior. When box-sizing is set to border-box, the width includes the content, padding, and border, which makes layout easier to control and more predictable.
+            </p>
+
+            <img src="images/boxmodel.png" alt="Diagram showing content, padding, border, and margin in the CSS box model" width="600" height="400">
+        </article>
+
+        <article class="bgimage">
+            <h2>Background Images</h2>
+            <p>
+                Images placed in img tags are part of the page content. They can have alt text, can be resized directly in HTML or CSS, and are important when the image itself carries meaning. Background images added through CSS are mainly decorative or used for visual design. They are useful when an image is there to support the layout or mood of a section rather than to provide essential content.
+            </p>
+            <p>
+                Background images behave differently from regular image tags because they are controlled entirely through CSS. This makes them useful for covering a whole article or section and layering text on top. However, because they are not actual content in the HTML, they are not the best choice for important images that users need to understand directly.
+            </p>
+        </article>
+    </main>
+
+    <footer>
+        <p>Page by Manda</p>
+        <p>HTML checked by Evelyn K.</p>
+    </footer>
+</body>
+</html>

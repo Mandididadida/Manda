@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MadLib</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <header class="sr-only">
+        <h1>MadLib</h1>
+    </header>
+
+    <main class="screen">
+
+        <section id="startPage" class="madlib-page index-bg">
+            <h2 class="sr-only">Start Page</h2>
+            <button type="button" id="openBtn">OPEN</button>
+            <a href="../index.html" class="homeBtn">H<br>O<br>M<br>E</a>
+        </section>
+
+        <section id="pageOne" class="madlib-page page1-bg hide">
+            <h2 class="sr-only">Page One</h2>
+
+            <a href="../index.html" class="homeBtn">H<br>O<br>M<br>E</a>
+
+            <form id="pageOneForm">
+                <section class="requiredWords">
+                    <section class="col">
+                        <label for="friendName">Name</label>
+                        <input type="text" id="friendName" required>
+
+                        <label for="adjective">Adjective</label>
+                        <input type="text" id="adjective" required>
+
+                        <label for="creature">Creature</label>
+                        <input type="text" id="creature" required>
+                    </section>
+
+                    <section class="col">
+                        <label for="store">Store</label>
+                        <input type="text" id="store" required>
+
+                        <label for="animal">Animal</label>
+                        <input type="text" id="animal" required>
+
+                        <label for="fruit">Fruit</label>
+                        <input type="text" id="fruit" required>
+                    </section>
+
+                    <section class="col">
+                        <label for="verb">Verb</label>
+                        <input type="text" id="verb" required>
+
+                        <label for="place">Place</label>
+                        <input type="text" id="place" required>
+
+                        <label for="clothes">Clothes</label>
+                        <input type="text" id="clothes" required>
+                    </section>
+
+                    <section class="col">
+                        <label for="money">Type of Money</label>
+                        <input type="text" id="money" required>
+                    </section>
+                </section>
+
+                <button type="button" id="backToStart" class="backBtn">BACK</button>
+                <input type="submit" value="NEXT" class="nextBtn">
+            </form>
+        </section>
+
+        <section id="pageTwo" class="madlib-page page2-bg hide">
+            <h2 class="sr-only">Page Two</h2>
+
+            <a href="../index.html" class="homeBtn">H<br>O<br>M<br>E</a>
+
+            <form id="pageTwoForm">
+                <section class="optionalWords">
+                    <section class="optionalCol">
+                        <label for="petAnimal">Pet Animal</label>
+                        <input type="text" id="petAnimal">
+
+                        <label for="wowAdjective">Second Adjective</label>
+                        <input type="text" id="wowAdjective">
+                    </section>
+
+                    <section class="optionalCol">
+                        <label for="petAdjective">Pet Adjective</label>
+                        <input type="text" id="petAdjective">
+
+                        <label for="secondVerb">Second Verb</label>
+                        <input type="text" id="secondVerb">
+                    </section>
+
+                    <section class="optionalCol">
+                        <label for="moneyAdjective">Money Adjective</label>
+                        <input type="text" id="moneyAdjective">
+                    </section>
+                </section>
+
+                <button type="button" id="backToPageOne" class="backBtn">BACK</button>
+                <input type="submit" value="NEXT" class="nextBtn">
+            </form>
+        </section>
+
+        <section id="resultPage" class="madlib-page madlib-bg hide">
+            <h2 class="sr-only">Result Page</h2>
+
+            <a href="../index.html" class="homeBtn">H<br>O<br>M<br>E</a>
+
+            <article id="finalStory">
+                <p>
+                    Hi, I’m 
+                    <span id="storyName" class="userWord">________</span>.
+                    I am a/an 
+                    <span id="storyAdjective" class="userWord">________</span>
+                    <span id="storyCreature" class="userWord">________</span>,
+                    and today I decided to go shopping at 
+                    <span id="storyStore" class="userWord">________</span>.
+                </p>
+
+                <p>
+                    As I walked in, I saw a/an 
+                    <span id="storyAnimal" class="userWord">________</span>
+                    also named 
+                    <span id="storySameName" class="userWord">________</span>
+                    trying to buy a 
+                    <span id="storyPetAnimal" class="userWord">________</span>
+                    as pet. I thought, “wow, that’s pretty 
+                    <span id="storyWowAdjective" class="userWord">________</span>.”
+                </p>
+
+                <p>
+                    I decided I also needed a pet. So I chose a/an 
+                    <span id="storyPetAdjective" class="userWord">________</span>
+                    <span id="storyFruit" class="userWord">________</span>
+                    that could 
+                    <span id="storyVerb" class="userWord">________</span>
+                    and sometimes 
+                    <span id="storySecondVerb" class="userWord">________</span>.
+                    We will live together in 
+                    <span id="storyPlace" class="userWord">________</span>
+                    together.
+                </p>
+
+                <p>
+                    Finally, I went to pay. I reached into my 
+                    <span id="storyClothes" class="userWord">________</span>
+                    and pulled out 
+                    <span id="storyMoney" class="userWord">________</span>.
+                    I paid with 
+                    <span id="storySameMoney" class="userWord">________</span>,
+                    even though it was a little 
+                    <span id="storyMoneyAdjective" class="userWord">________</span>.
+                </p>
+            </article>
+
+            <button type="button" id="againBtn" class="againBtn">AGAIN</button>
+        </section>
+
+    </main>
+</body>
+</html>

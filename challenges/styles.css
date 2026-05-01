@@ -1,0 +1,147 @@
+
+.playpen-sans{
+  font-family: "Playpen Sans", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+.monoton-regular {
+  font-family: "Monoton", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+h1,h2{
+  font-family: "Monoton", sans-serif;
+  color: #c96a2b;
+  background-color: antiquewhite;
+}
+h1{
+  font-size: 2em;
+}
+h2{
+  font-size: 1.5em;
+}
+p{
+  font-size: 1em;
+  line-height: 1.5em;
+  max-width: 600px;
+}
+body{
+  background-color: #F7F2EA;
+  color:#1F1A17;
+  font-family: "Playpen Sans", cursive;
+  font-weight: 700;
+}
+
+/* header{
+background-color: #4F6D5E;
+
+}
+article{
+  background-color: #FFFDFC;
+}
+footer{
+  background-color: #c9733e;
+  margin: auto;
+} */
+header {
+  background: linear-gradient(90deg, #4F6D5E, #6f8f7c);
+}
+
+footer {
+  background: linear-gradient(90deg, #c9733e, #e1a06f);
+}
+img{
+  display: block;
+  max-width: 100%;
+  height:auto
+}
+/* article {
+  margin-bottom: 40px;
+} */
+article img {
+  margin-top: 20px;
+}
+header,footer{
+  text-align: center;
+}
+main{
+  padding: 20px;
+  background-color: #FFFDFC;
+  margin: auto auto auto auto;
+}
+
+main, header, footer, nav {
+  max-width: 1000px;
+  margin: auto;
+}
+
+nav {
+  background-color: #4F6D5E;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  /* display: flex;
+  justify-content: center; */
+}
+/* 
+nav ul li {
+  flex: 1;
+} */
+
+nav ul li a {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  color: #F7F2EA;
+  background-color: #4F6D5E;
+  font-family: "Monoton", sans-serif;
+  padding: 20px 0;
+}
+
+nav ul li a:hover {
+  background-color: #c96a2b;
+  color: #FFFDFC;
+}
+article {
+  margin-bottom: 30px;
+}
+.bgimage {
+  background-image: url("images/stars.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 30px;
+}
+
+@media only screen and (min-width: 600px) {
+  main {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  article {
+    width: 30%;
+  }
+
+  nav ul {
+    display: flex;
+  }
+
+  nav ul li {
+    flex: 1;
+    border-right: 1px solid #FFFDFC;
+  }
+
+  nav ul li:last-of-type {
+    border-right: none;
+  }
+}

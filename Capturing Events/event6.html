@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window Events</title>
+</head>
+<body>
+    <h1>Window Events</h1>
+    <p>Resize the window and watch the console</p>
+    <script>
+        window.addEventListener(`resize`, function() {
+            console.log(`page width is ${window.innerWidth}`);
+            console.log(`page height is ${window.innerHeight}`);
+        });
+    </script>
+</body>
+</html>

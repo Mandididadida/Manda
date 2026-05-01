@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exp 2</title>
+    <style>
+        body {
+            background-color: #dfe9d8;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 30px;
+        }
+        h1 {
+            margin-bottom: 10px;
+        }
+        h2 {
+            margin-top: 0px;
+            margin-bottom: 20px;
+        }
+        p{
+            font-size: 18px;
+            line-height: 26px;
+        }
+        img {
+            width: 80%;
+            height: auto;
+            max-width: 700px;
+            margin: 0 auto;
+            display: block;
+        }
+        a {
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="title">Welcome to Exp 2</h1>
+    <h2 id="subtitle">This is the second experiment</h2>
+    <img id="mainImage" src="images/page1.jpg" alt="bear">
+    <p id="message">This is a simple message for the second experiment.</p>
+    <p id="choice1">This is the first choice.</p>
+    <p id="choice2">This is the second choice.</p>
+    <p id="choice3">This is the third choice.</p>
+    <p id="choice4">This is the fourth choice.</p>
+
+    <script>
+        //  This program asks the user for a name, an image choice, and a color choice.
+
+        var userName = prompt("Please enter your name:");
+        var imageChoice = prompt("Please choose an image (bear, sheep):");
+        var colorChoice = prompt("Please choose a color (red, green, blue):");
+
+        var bearText=[
+            "This is a bear image.",
+            "You chose the first image, which is a bear.",
+            "Bears are large mammals that can be found in various habitats around the world.",
+            "They are known for their strength and adaptability, and they play an important role in many ecosystems.",
+        ];
+        var sheepText=[
+            "This is a sheep image.",
+            "You chose the second image, which is a sheep.",
+            "Sheep are domesticated animals that are raised for their wool, meat, and milk.",
+            "They are social animals that live in flocks and are known for their gentle nature.",
+        ];
+        function hello(name){
+            var greeting;
+            if(name === null || name === ""){
+                greeting = "Hello, guest!";
+            } else {
+                greeting = "Hello, " + name + "!";
+            }
+            return greeting;    
+        }
+        function randomInt(min, max) {
+            return Math.floor((max - min + 1) * Math.random()) + min;
+        }
+
+        function pickText(textArray) {
+            var randomNumber = randomInt(0, textArray.length - 1);
+            return textArray[randomNumber];
+        }
+
+        function showList(textArray) {
+            for (var i = 0; i < textArray.length; i++) {
+                document.querySelector("#choice" + (i + 1)).innerHTML = textArray[i];
+            }
+        }
+
+        function changeColor(color) {
+            var allText = document.querySelectorAll("h1, h2, p");
+
+            for (var i = 0; i < allText.length; i++) {
+                if (color === "blue") {
+                    allText[i].style.color = "blue";
+                } else if (color === "green") {
+                    allText[i].style.color = "green";
+                } else if (color === "red") {
+                    allText[i].style.color = "red";
+                } else {
+                    allText[i].style.color = "black";
+                }
+            }
+        }
+
+        function makePage(name, image, color) {
+            var greetingText = hello(name);
+            var pickedMessage;
+            var textGroup;
+
+            document.querySelector("#title").innerHTML = greetingText;
+
+            if (image === "sheep") {
+                document.querySelector("#subtitle").innerHTML = "Here is your sheep page.";
+                document.querySelector("#mainImage").setAttribute("src", "images/page3.jpg");
+                textGroup = sheepText;
+            } else {
+                document.querySelector("#subtitle").innerHTML = "Here is your bear page.";
+                document.querySelector("#mainImage").setAttribute("src", "images/page1.jpg");
+                textGroup = bearText;
+            }
+
+            pickedMessage = pickText(textGroup);
+            document.querySelector("#message").innerHTML = pickedMessage;
+
+            showList(textGroup);
+            changeColor(color);
+        }
+
+        makePage(userName, imageChoice, colorChoice);
+        
+    </script>
+    <section>
+        <p><a href="exp2.html">Play Again</a></p>
+        <p><a href="../index.html">Back to Portal Page</a></p>
+    </section>
+</body>
+</html>

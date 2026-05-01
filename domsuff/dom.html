@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM JS</title>
+    <style>
+        .blue{
+            color: blue;
+        }    
+    </style>
+</head>
+<body>
+    <h1>Working with the DOM</h1>
+        <p id="one">Here is some text</p>
+        <article>
+            <p>here is some more text</p>
+            <p class="special">here is the special text</p>
+            <p>here is the special text</p>
+            <p></p>
+        </article>
+        <p>here is more text</p>
+        <p>here is even more text</p>
+        <p>here is the last text</p>
+        <p>here is the last text</p>
+    
+    <form>
+        <input type="checkbox" checked="checked">Yes</label>
+        <input type="submit" value="Submit">
+    </form>
+    <script>
+        document.querySelector("#one").style. color = "red";
+        document.querySelector(`.special`).style. color = "red";
+        text.style.fontSize = "2em";
+        // 他只会找第一个符合要求的，比如一堆P里只选第一个P，其他的P不会被选中
+        var myP = document.querySelector("p");
+        var myPs = document.querySelectorAll("p");
+        console.log(myPs);
+            for( var i = 0; i < myPs.length; i++){
+                myPs[i].style.color = "blue";
+            }
+        myPs [0].style.color = "blue";
+
+        var checkbox = document.querySelector("input[type='checkbox']");
+    
+    </script>
+</body>
+</html>

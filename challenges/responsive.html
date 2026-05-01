@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Playpen+Sans&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <title>Responsive Design</title>
+</head>
+<body>
+    <header>
+        <h1>Responsive Design</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">HTML Basics</a></li>
+            <li><a href="cssbasics.html">CSS Basics</a></li>
+            <li><a href="layout.html">Page Layout</a></li>
+            <li><a href="responsive.html">Responsive Design</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <article>
+            <h2>About Media Queries</h2>
+            <p>
+                Media queries are CSS rules that let a web page change its layout or styling depending on the size of the screen or browser window. They are useful because the same page may be viewed on a phone, tablet, or desktop, and each screen size needs a slightly different layout. A media query checks a condition, and if that condition is true, the styles inside it will be applied.
+            </p>
+            <p>
+                A min-width media query applies styles when the screen is at least a certain width, while a max-width media query applies styles when the screen is at or below a certain width. In many modern layouts, designers start with small screens first and then use min-width queries to add more layout for larger screens. This approach works better because it keeps the base design simpler and makes it easier to expand the layout step by step.
+            </p>
+        </article>
+
+        <article>
+            <h2>Relative Units</h2>
+            <p>
+                Relative units are measurements that change based on the screen, the parent element, or the text size. They are useful in web design because they make pages more flexible and responsive. For example, em units are often used for type because they scale based on the font size. Percentages are useful for widths because they let elements grow or shrink with the page layout.
+            </p>
+            <p>
+                Other relative units include vw and vh, which stand for viewport width and viewport height. These units are based on the size of the browser window, so they can be useful for banners, sections, or spacing that should respond to the screen size. Relative units help web pages adapt better than fixed pixel values in many situations.
+            </p>
+        </article>
+
+        <article>
+            <h2>Meta Viewport Tag</h2>
+            <p>
+                The meta viewport tag tells the browser how to scale and size the page on mobile devices. Without it, the browser may try to show the whole desktop layout on a small screen, which makes the text look tiny and the page hard to read. With the viewport tag included, the page matches the width of the device and the layout behaves more naturally on phones and tablets.
+            </p>
+            <p>
+                When I compare pages with and without the meta viewport tag in Chrome inspector, the version without it looks zoomed out and much smaller on a mobile screen. The version with it fills the screen better and is easier to read. This tag is important because it helps responsive CSS work the way it is supposed to.
+            </p>
+        </article>
+    </main>
+
+    <footer>
+        <p>Page by Manda</p>
+        <p>HTML checked by Evelyn K.</p>
+    </footer>
+</body>
+</html>

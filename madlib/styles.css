@@ -1,0 +1,232 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: "Chewy", "Comic Sans MS", "Marker Felt", Arial, sans-serif;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+.screen {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.madlib-page {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+/* backgrounds */
+.index-bg {
+    background-image: url("images/indexback.png");
+}
+
+.page1-bg {
+    background-image: url("images/page1back.png");
+}
+
+.page2-bg {
+    background-image: url("images/page2back.png");
+}
+
+.madlib-bg {
+    background-image: url("images/madlib3back.png");
+}
+
+/* utility */
+.hide {
+    display: none;
+}
+
+.sr-only {
+    position: absolute;
+    left: -9999px;
+}
+
+/* general type */
+button,
+input,
+label,
+a {
+    font-family: "Chewy", "Comic Sans MS", "Marker Felt", Arial, sans-serif;
+}
+
+/* home */
+.homeBtn {
+    position: absolute;
+    right: 28px;
+    top: 165px;
+    color: #111;
+    text-decoration: none;
+    font-size: 25px;
+    line-height: 1.25;
+    z-index: 80;
+}
+
+/* buttons */
+.backBtn,
+.nextBtn,
+.againBtn,
+#openBtn {
+    position: absolute;
+    display: block;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.backBtn,
+.nextBtn,
+.againBtn {
+    color: transparent;
+    font-size: 0;
+}
+
+.backBtn {
+    left: 110px;
+    bottom: 75px;
+    width: 115px;
+    height: 80px;
+}
+
+.nextBtn {
+    right: 105px;
+    bottom: 75px;
+    width: 115px;
+    height: 80px;
+    padding: 0;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.againBtn {
+    right: 100px;
+    bottom: 83px;
+    width: 140px;
+    height: 85px;
+}
+
+#openBtn {
+    left: 890px;
+    top: 450px;
+    transform: translate(-50%, -50%) rotate(-5deg);
+    color: black;
+    font-size: 90px;
+    line-height: 1;
+}
+
+#openBtn:hover {
+    font-size: 110px;
+}
+
+/* forms */
+form {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+}
+
+/* page 1 */
+.requiredWords {
+    position: absolute;
+    top: 95px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 860px;
+    display: flex;
+    justify-content: center;
+    gap: 38px;
+    z-index: 20;
+}
+
+.col {
+    width: 185px;
+}
+
+/* page 2 */
+.optionalWords {
+    position: absolute;
+    top: 230px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 760px;
+    display: flex;
+    justify-content: center;
+    gap: 55px;
+    z-index: 20;
+}
+
+.optionalCol {
+    width: 210px;
+}
+
+/* labels and inputs */
+label {
+    display: block;
+    font-size: 13px;
+    color: #111;
+    margin-bottom: 5px;
+    white-space: nowrap;
+}
+
+input[type="text"] {
+    display: block;
+    width: 100%;
+    height: 22px;
+    margin-bottom: 9px;
+    padding: 2px 6px;
+    border: none;
+    border-bottom: 1px solid #111;
+    background: rgba(255, 255, 255, 0.18);
+    color: #111;
+    font-size: 12px;
+}
+
+input[type="text"]:focus {
+    border: 1px solid #D6D9DC;
+    outline: dashed gray;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+                0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* result story */
+#finalStory {
+    position: absolute;
+    align-items: center;
+    left: 255px;
+    top: 120px;
+    width: 760px;
+    height: 500px;
+    font-size: 30px;
+    line-height: 1.55;
+    color: #111;
+    z-index: 20;
+}
+
+#finalStory p {
+    margin: 0 0 17px 0;
+}
+
+.userWord {
+    font-weight: bold;
+}

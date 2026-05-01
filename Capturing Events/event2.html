@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Events</title>
+
+</head>
+<body>
+    
+    <h1>JavaScript Events</h1>
+    <a href="https://www.google.com">Go to Google</a>
+
+    <script>
+        var link = document.querySelector("a");
+        link.addEventListener("click", function(event) {
+            event.preventDefault();
+            alert("Ouch! Why did you press me?");
+        });
+    </script>
+
+    <script>
+        var btn = document.querySelector("button");
+
+        function ouch() {
+            alert("Ouch! Why did you press me?");
+        }
+        btn.onclick = ouch;
+    </script>
+
+    <script>
+        var btn = document.querySelector("button");
+        btn.onclick = function() {
+            alert("Ouch! Why did you press me?");
+        }
+    </script>
+</body>
+</html>
