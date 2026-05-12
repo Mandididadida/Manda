@@ -1,0 +1,304 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #dce9f2;
+}
+
+/* landing page */
+
+#landingPage {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background-image: url("image/landingimage.jpg");
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+/* soft dark layer over background */
+#landingPage::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(25, 35, 55, 0.28);
+  top: 0;
+  left: 0;
+}
+
+/* transparent bubble title */
+
+#dreamTitle {
+  position: absolute;
+  top: 45px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+
+  padding: 18px 38px;
+  border-radius: 50px;
+
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 46px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-align: center;
+
+  background-color: rgba(255, 255, 255, 0.16);
+  border: 2px solid rgba(255, 255, 255, 0.45);
+
+  text-shadow:
+    0 0 8px rgba(255, 255, 255, 0.9),
+    0 0 20px rgba(210, 235, 255, 0.8),
+    0 0 35px rgba(255, 255, 255, 0.5);
+
+  backdrop-filter: blur(8px);
+}
+
+#instruction {
+  position: absolute;
+  top: 135px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 17px;
+  background-color: rgba(255, 255, 255, 0.14);
+  padding: 8px 20px;
+  border-radius: 30px;
+  backdrop-filter: blur(5px);
+}
+
+/* animal base */
+
+.animal {
+  position: absolute;
+  z-index: 4;
+  cursor: pointer;
+  transition: all 0.8s;
+  filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.35));
+}
+
+/* animal positions */
+
+#bear {
+  width: 170px;
+  left: 16%;
+  top: 43%;
+}
+
+#lamb {
+  width: 155px;
+  left: 38%;
+  top: 33%;
+}
+
+#lion {
+  width: 175px;
+  right: 24%;
+  top: 40%;
+}
+
+#tata {
+  width: 205px;
+  right: 9%;
+  top: 52%;
+}
+
+/* hover animal effects */
+
+#bear:hover,
+#lamb:hover,
+#lion:hover,
+#tata:hover {
+  transform: scale(1.18) translateY(-12px);
+  filter:
+    drop-shadow(0 0 12px rgba(255, 255, 255, 0.95))
+    drop-shadow(0 0 28px rgba(210, 235, 255, 0.8));
+}
+
+/* pop labels */
+
+.popText {
+  position: absolute;
+  z-index: 5;
+  opacity: 0;
+  transition: all 0.6s;
+
+  padding: 12px 20px;
+  border-radius: 30px;
+
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(8px);
+
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+#bearPop {
+  left: 17%;
+  top: 36%;
+}
+
+#lambPop {
+  left: 39%;
+  top: 26%;
+}
+
+#lionPop {
+  right: 23%;
+  top: 33%;
+}
+
+#tataPop {
+  right: 10%;
+  top: 46%;
+}
+
+/* show pop text when hover animal */
+
+#bear:hover ~ #bearPop {
+  opacity: 1;
+  transform: translateY(-10px);
+}
+
+#lamb:hover ~ #lambPop {
+  opacity: 1;
+  transform: translateY(-10px);
+}
+
+#lion:hover ~ #lionPop {
+  opacity: 1;
+  transform: translateY(-10px);
+}
+
+#tata:hover ~ #tataPop {
+  opacity: 1;
+  transform: translateY(-10px);
+}
+
+/* right side dream panel */
+
+#dreamPanel {
+  position: fixed;
+  top: 0;
+  right: -460px;
+
+  width: 430px;
+  height: 100vh;
+  z-index: 20;
+
+  background-color: rgba(255, 255, 255, 0.52);
+  backdrop-filter: blur(18px);
+  border-left: 2px solid rgba(255, 255, 255, 0.55);
+  box-shadow: -10px 0 25px rgba(0, 0, 0, 0.22);
+
+  transition: all 0.8s;
+}
+
+#closeButton {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  z-index: 25;
+
+  background-color: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 50%;
+
+  width: 36px;
+  height: 36px;
+
+  font-size: 28px;
+  line-height: 28px;
+  color: #38465a;
+  cursor: pointer;
+}
+
+#closeButton:hover {
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+/* panel inner scroll */
+
+#panelScroll {
+  height: 100%;
+  overflow-y: auto;
+  padding: 62px 28px 28px 28px;
+}
+
+#panelTitle {
+  margin: 0 0 20px 0;
+  color: #2f3b4f;
+  font-size: 30px;
+  line-height: 1.2;
+}
+
+#panelImage {
+  width: 100%;
+  border-radius: 24px;
+  display: block;
+  margin-bottom: 22px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+}
+
+#panelStory {
+  color: #2f3b4f;
+  font-size: 17px;
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+
+/* buttons */
+
+#buttonArea {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-bottom: 20px;
+}
+
+#nextDreamButton,
+#portalButton {
+  width: 100%;
+  padding: 15px 18px;
+  border-radius: 40px;
+
+  font-size: 17px;
+  text-align: center;
+  text-decoration: none;
+
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+#nextDreamButton {
+  border: none;
+  color: #344056;
+  background-color: rgba(255, 255, 255, 0.78);
+}
+
+#portalButton {
+  color: #344056;
+  background-color: rgba(218, 232, 255, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+}
+
+#nextDreamButton:hover,
+#portalButton:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+}
