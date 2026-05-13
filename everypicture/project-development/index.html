@@ -4,64 +4,79 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nap Dream Selector</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
 
 <body>
+  <main class="dream-stage">
 
-  <div id="landingPage">
+    <section class="landing" aria-labelledby="page-title">
+      <h1 id="page-title">Choose Today's Nap Dream Theme</h1>
+      <!-- <p class="intro-text">Hover over a plush friend, then click to enter a dream.</p> -->
 
-    <div id="dreamTitle">
-      Choose Today's Nap Dream Theme
-    </div>
+      <nav class="animal-menu" aria-label="Dream choices">
+        <button class="animal-card bear" type="button" data-dream="bear">
+          <img src="images/popbear.png" width="280" height="360" alt="A soft brown teddy bear plush toy">
+          <span>Love Dream</span>
+        </button>
 
-    <!-- <div id="instruction">
-      Hover over an animal, then click to enter the dream.
-    </div> -->
+        <button class="animal-card lamb" type="button" data-dream="lamb">
+          <img src="images/poplamb.png" width="270" height="330" alt="A white lamb plush toy">
+          <span>Soft Dream</span>
+        </button>
 
-    <img src="image/popbear.png" alt="Bear" id="bear" class="animal" onclick="openBear()">
-    <img src="image/poplamb.png" alt="Lamb" id="lamb" class="animal" onclick="openLamb()">
-    <img src="image/poplion.png" alt="Lion" id="lion" class="animal" onclick="openLion()">
-    <img src="image/poptata.png" alt="Otter" id="tata" class="animal" onclick="openTata()">
+        <button class="animal-card lion" type="button" data-dream="lion">
+          <img src="images/poplion.png" width="300" height="300" alt="A small lion plush toy">
+          <span>Friendship Dream</span>
+        </button>
 
-    <div id="bearPop" class="popText">Love Dream</div>
-    <div id="lambPop" class="popText">Dream Dream</div>
-    <div id="lionPop" class="popText">Friendship Dream</div>
-    <div id="tataPop" class="popText">Family Dream</div>
+        <button class="animal-card tata" type="button" data-dream="tata">
+          <img src="images/poptata.png" width="360" height="260" alt="A brown otter plush holding a baby otter">
+          <span>Family Dream</span>
+        </button>
+      </nav>
 
-    <footer class="footer">
-                <p>Designed by Manda</p>
-                <address>
-                    Contact: 
-                    <a href="mailto:&#115;&#106;&#121;&#115;&#104;&#105;&#064;&#117;&#099;&#100;&#097;&#118;&#105;&#115;&#046;&#101;&#100;&#117;">&#115;&#106;&#121;&#115;&#104;&#105;&#064;&#117;&#099;&#100;&#097;&#118;&#105;&#115;&#046;&#101;&#100;&#117;</a>
-                </address>
-            </footer>
-  </div>
+      <footer class="footer">
+        <p>Designed by Manda</p>
+        <address>
+          Contact:
+          <a href="mailto:&#115;&#106;&#121;&#115;&#104;&#105;&#064;&#117;&#099;&#100;&#097;&#118;&#105;&#115;&#046;&#101;&#100;&#117;">
+            &#115;&#106;&#121;&#115;&#104;&#105;&#064;&#117;&#099;&#100;&#097;&#118;&#105;&#115;&#046;&#101;&#100;&#117;
+          </a>
+        </address>
+      </footer>
+    </section>
 
-  <div id="dreamPanel">
+    <section class="dream-overlay" id="dream-overlay" aria-labelledby="dream-title">
+      <article class="dream-modal">
+        <button class="close-button" id="close-button" type="button" aria-label="Close dream panel">×</button>
 
-    <button id="closeButton" onclick="closePanel()">×</button>
+        <figure class="dream-image-wrap">
+          <img id="dream-image" src="images/bearlove.jpg" width="760" height="520" alt="Dream scene">
+        </figure>
 
-    <div id="panelScroll">
+        <section class="dream-text">
+          <p class="dream-label">Tonight's nap dream</p>
+          <h2 id="dream-title">Dream Title</h2>
+          <p id="dream-caption">A small dream memory appears here.</p>
+          <p id="dream-story">Dream story will appear here.</p>
 
-      <h1 id="panelTitle">Dream Title</h1>
+          <div class="button-area">
+            <button id="next-dream" type="button">Sleepy, choose another dream</button>
+            <a href="../index.html">No more sleep, go to class</a>
+          </div>
+        </section>
+      </article>
+    </section>
 
-      <img src="image/bearlove.png" alt="Dream image" id="panelImage">
-
-      <p id="panelStory">
-        Dream story will appear here.
-      </p>
-
-      <div id="buttonArea">
-        <button id="nextDreamButton" onclick="closePanel()">Sleepy, next dream</button>
-        <a href="../index.html" id="portalButton">No more sleep, go to class</a>
-      </div>
-
-    </div>
-
-  </div>
-
-  <script src="script.js"></script>
-
+  </main>
 </body>
 </html>
