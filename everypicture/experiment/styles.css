@@ -76,6 +76,42 @@ body {
   backdrop-filter: blur(5px);
 }
 
+.footer {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 6;
+
+  text-align: center;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 14px;
+
+  background-color: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 30px;
+  padding: 10px 24px;
+
+  backdrop-filter: blur(8px);
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+.footer p {
+  margin: 0 0 4px 0;
+}
+
+.footer address {
+  font-style: normal;
+}
+
+.footer a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
 /* animal base */
 
 .animal {

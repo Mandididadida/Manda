@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nap Dream Selector</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <div id="landingPage">
+
+    <div id="dreamTitle">
+      Choose Today's Nap Dream Theme
+    </div>
+
+    <!-- <div id="instruction">
+      Hover over an animal, then click to enter the dream.
+    </div> -->
+
+    <img src="image/popbear.png" alt="Bear" id="bear" class="animal" onclick="openBear()">
+    <img src="image/poplamb.png" alt="Lamb" id="lamb" class="animal" onclick="openLamb()">
+    <img src="image/poplion.png" alt="Lion" id="lion" class="animal" onclick="openLion()">
+    <img src="image/poptata.png" alt="Otter" id="tata" class="animal" onclick="openTata()">
+
+    <div id="bearPop" class="popText">Love Dream</div>
+    <div id="lambPop" class="popText">Dream Dream</div>
+    <div id="lionPop" class="popText">Friendship Dream</div>
+    <div id="tataPop" class="popText">Family Dream</div>
+
+    <footer class="footer">
+                <p>Designed by Manda</p>
+                <address>
+                    Contact: 
+                    <a href="mailto:&#115;&#106;&#121;&#115;&#104;&#105;&#064;&#117;&#099;&#100;&#097;&#118;&#105;&#115;&#046;&#101;&#100;&#117;">&#115;&#106;&#121;&#115;&#104;&#105;&#064;&#117;&#099;&#100;&#097;&#118;&#105;&#115;&#046;&#101;&#100;&#117;</a>
+                </address>
+            </footer>
+  </div>
+
+  <div id="dreamPanel">
+
+    <button id="closeButton" onclick="closePanel()">×</button>
+
+    <div id="panelScroll">
+
+      <h1 id="panelTitle">Dream Title</h1>
+
+      <img src="image/bearlove.png" alt="Dream image" id="panelImage">
+
+      <p id="panelStory">
+        Dream story will appear here.
+      </p>
+
+      <div id="buttonArea">
+        <button id="nextDreamButton" onclick="closePanel()">Sleepy, next dream</button>
+        <a href="../index.html" id="portalButton">No more sleep, go to class</a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
