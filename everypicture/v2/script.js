@@ -1,57 +1,131 @@
-const dreamPanel = document.querySelector("#dreamPanel");
-const panelTitle = document.querySelector("#panelTitle");
-const panelImage = document.querySelector("#panelImage");
-const panelStory = document.querySelector("#panelStory");
-const landingPage = document.querySelector("#landingPage");
+(function () {
+  const dreams = {
+    bear: {
+      title: "Love Dream",
+      image: "images/bearlove.png",
+      pop: "images/popbear.png",
+      alt: "A teddy bear held during a romantic night view date",
+      caption: "A romantic bear dream about a date, city lights, and a soft moment of happiness.",
+      story: "In this dream, the bear goes on a date with someone special. They drive to UC Berkeley and find a quiet terrace where the city lights stretch out below them. The night feels peaceful, romantic, and full of happiness. The bear represents a sweet memory of being loved, sharing the view together, and wishing that this warm moment could last a little longer."
+    },
 
-function openBear() {
-  panelTitle.innerHTML = "Bear · Love Dream";
-  panelImage.src = "image/bearlove.png";
+    lamb: {
+      title: "Dream Car Dream",
+      image: "images/lambdream.png",
+      pop: "images/poplamb.png",
+      alt: "A lamb plush seeing a dream car outside",
+      caption: "A soft lamb dream about seeing a dream car and imagining future freedom.",
+      story: "In this dream, the lamb is on the way to dinner when it suddenly sees its dream car parked outside. For a moment, everything feels bright and exciting. The car becomes more than just a beautiful object. It represents ambition, independence, and the hope that one day the lamb will be able to drive toward its own future adventure."
+    },
 
-  panelStory.innerHTML =
-    "You fall asleep and wake up in the back of a car, under a dark sky full of city lights. A soft teddy bear is sitting in your arms, and a bouquet of red roses is beside you. Everything feels quiet, warm, and a little unreal.<br><br>" +
-    "This dream is about love. Not loud love, not perfect love, but the kind of love that feels like being held safely in a small glowing space. The bear does not say anything, but it stays close to you. It reminds you that love can be gentle, sleepy, and simple.<br><br>" +
-    "In this dream, love is not only romance. It is also comfort. It is someone remembering you, someone choosing you, and someone making an ordinary night feel soft.";
+    lion: {
+      title: "Friendship Dream",
+      image: "images/lionfriend.png",
+      pop: "images/poplion.png",
+      alt: "A lion plush in a late-night snack memory with friends",
+      caption: "A playful lion dream about a spontaneous midnight McDonald’s trip with friends.",
+      story: "In this dream, the lion and its friends suddenly decide in the middle of the night that they need a late-night snack. Without overthinking, they drive to McDonald’s together. The car is full of laughter, random conversations, and sleepy excitement. The ice cream becomes part of the memory too: simple, sweet, and unforgettable. This dream represents the energetic kind of friendship where even a tiny midnight plan can become a precious adventure."
+    },
 
-  dreamPanel.style.right = "0";
-}
+    tata: {
+      title: "Family Dream",
+      image: "images/tatafamily.png",
+      pop: "images/poptata.png",
+      alt: "An otter plush family on a California road trip",
+      caption: "A warm otter dream about a family road trip along California’s Highway 1 and 17-Mile Drive.",
+      story: "In this dream, the otter travels with its family on a road trip along California’s Highway 1. They pass the ocean, trees, and beautiful coastal views, eventually arriving at 17-Mile Drive. The trip feels calm, beautiful, and deeply comforting. The otter represents the tenderness of family time: sitting together in the car, sharing the scenery, and feeling protected by the people closest to you. This dream wishes that such warm family moments could continue."
+    }
+  };
 
-function openLamb() {
-  panelTitle.innerHTML = "Lamb · Dream Dream";
-  panelImage.src = "image/lambdream.png";
+  const outlinePaths = document.querySelectorAll(".outline-path");
 
-  panelStory.innerHTML =
-    "You wake up inside a parked car at sunset. A white lamb is resting on the dashboard, looking out toward a bright green sports car. The lamb looks small and soft, but the world outside the window feels fast, shiny, and impossible to reach.<br><br>" +
-    "This dream is about ambition and future wishes. The lamb represents the quiet part of you that still wants something big. It does not run toward the dream immediately. It only watches first, wondering if it is allowed to want more.<br><br>" +
-    "The dream tells you that dreams can look strange from the inside. Sometimes they are expensive, bright, and far away. Sometimes they are soft and shy. But even a small lamb can be looking at a very big future.";
+  const overlay = document.querySelector("#dream-overlay");
+  const closeButton = document.querySelector("#close-button");
+  const nextDreamButton = document.querySelector("#next-dream");
 
-  dreamPanel.style.right = "0";
-}
+  const dreamImage = document.querySelector("#dream-image");
+  const dreamPop = document.querySelector("#dream-pop");
+  const dreamTitle = document.querySelector("#dream-title");
+  const dreamCaption = document.querySelector("#dream-caption");
+  const dreamStory = document.querySelector("#dream-story");
 
-function openLion() {
-  panelTitle.innerHTML = "Lion · Friendship Dream";
-  panelImage.src = "image/lionfriend.png";
+  let currentDream = "bear";
 
-  panelStory.innerHTML =
-    "In this dream, you are sitting in a car at night, sharing ice cream with someone. The road map glows blue in the background, and a lion is hanging quietly near the front of the car. The whole scene feels like a small road trip with no clear destination.<br><br>" +
-    "This dream is about friendship. The lion is brave, but it is also silly and soft. It reminds you of the kind of friend who makes late nights feel less lonely. You do not need to have a perfect plan. You only need someone who wants to be there with you.<br><br>" +
-    "The ice cream melts, the car lights glow, and the dream keeps moving. Friendship here is not a serious promise. It is a shared snack, a random drive, and the feeling that someone is laughing beside you.";
+  function clearActiveOutlines() {
+    outlinePaths.forEach(function (path) {
+      path.classList.remove("is-active");
+    });
+  }
 
-  dreamPanel.style.right = "0";
-}
+  function showOutline(path) {
+    clearActiveOutlines();
+    path.classList.add("is-active");
+  }
 
-function openTata() {
-  panelTitle.innerHTML = "Otter · Family Dream";
-  panelImage.src = "image/tatafamily.png";
+  function hideOutline(path) {
+    path.classList.remove("is-active");
+  }
 
-  panelStory.innerHTML =
-    "You dream of driving near the coast. Outside the window, the sky is blue, the grass is bright, and the ocean feels close even when you cannot see all of it. An otter is sitting near the window, holding a smaller otter in its arms.<br><br>" +
-    "This dream is about family. The otter does not look dramatic or powerful. It simply holds on. That is what makes it feel warm. Family in this dream is not about saying perfect words. It is about staying close, carrying each other, and looking out at the same view together.<br><br>" +
-    "As the car moves forward, the mirror reflects another piece of the road. The dream reminds you that family is both where you come from and what follows you quietly, even when you are moving somewhere new.";
+  function openDream(dreamName) {
+    const selected = dreams[dreamName];
+    currentDream = dreamName;
 
-  dreamPanel.style.right = "0";
-}
+    dreamImage.src = selected.image;
+    dreamImage.alt = selected.alt;
 
-function closePanel() {
-  dreamPanel.style.right = "-460px";
-}
+    dreamPop.src = selected.pop;
+    dreamPop.setAttribute("data-dream", dreamName);
+
+    dreamTitle.textContent = selected.title;
+    dreamCaption.textContent = selected.caption;
+    dreamStory.textContent = selected.story;
+
+    overlay.classList.add("open");
+  }
+
+  function closeDream() {
+    overlay.classList.remove("open");
+  }
+
+  function chooseAnotherDream() {
+    closeDream();
+    clearActiveOutlines();
+  }
+
+  outlinePaths.forEach(function (path) {
+    const dreamName = path.dataset.dream;
+
+    path.addEventListener("pointerenter", function () {
+      showOutline(path);
+    });
+
+    path.addEventListener("pointerleave", function () {
+      hideOutline(path);
+    });
+
+    path.addEventListener("click", function () {
+      openDream(dreamName);
+    });
+  });
+
+  closeButton.addEventListener("click", function () {
+    closeDream();
+    clearActiveOutlines();
+  });
+
+  nextDreamButton.addEventListener("click", chooseAnotherDream);
+
+  overlay.addEventListener("click", function (event) {
+    if (event.target === overlay) {
+      closeDream();
+      clearActiveOutlines();
+    }
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      closeDream();
+      clearActiveOutlines();
+    }
+  });
+}());
