@@ -1,6 +1,7 @@
 (function () {
   const dreams = {
     bear: {
+      label: "Tonight's nap dream",
       title: "Love Dream",
       image: "images/bearlove.png",
       pop: "images/popbear.png",
@@ -10,6 +11,7 @@
     },
 
     lamb: {
+      label: "Tonight's nap dream",
       title: "Dream Car Dream",
       image: "images/lambdream.png",
       pop: "images/poplamb.png",
@@ -19,6 +21,7 @@
     },
 
     lion: {
+      label: "Tonight's nap dream",
       title: "Friendship Dream",
       image: "images/lionfriend.png",
       pop: "images/poplion.png",
@@ -28,12 +31,23 @@
     },
 
     tata: {
+      label: "Tonight's nap dream",
       title: "Family Dream",
       image: "images/tatafamily.png",
       pop: "images/poptata.png",
       alt: "An otter plush family on a California road trip",
       caption: "A warm otter dream about a family road trip along California’s Highway 1 and 17-Mile Drive.",
       story: "In this dream, the otter travels with its family on a road trip along California’s Highway 1. They pass the ocean, trees, and beautiful coastal views, eventually arriving at 17-Mile Drive. The trip feels calm, beautiful, and deeply comforting. The otter represents the tenderness of family time: sitting together in the car, sharing the scenery, and feeling protected by the people closest to you. This dream wishes that such warm family moments could continue."
+    },
+
+    blanket: {
+      label: "Sleep mode",
+      title: "Dreamless Sleep",
+      image: "images/blanket.png",
+      pop: "images/blanket.png",
+      alt: "A yellow and white striped soft blanket",
+      caption: "A blanket so soft and warm that it pulls you into a deep, heavy sleep with no dream at all.",
+      story: "This time, there is no road trip, no city lights, and no midnight snack story. The blanket wraps around you with a quiet warmth that makes your whole body relax. Its softness feels safe, calm, and comforting, and you fall into such a deep sleep that no dream appears at all. It is simply a night of complete rest, stillness, and peace."
     }
   };
 
@@ -43,8 +57,10 @@
   const closeButton = document.querySelector("#close-button");
   const nextDreamButton = document.querySelector("#next-dream");
 
+  const dreamModal = document.querySelector(".dream-modal");
   const dreamImage = document.querySelector("#dream-image");
   const dreamPop = document.querySelector("#dream-pop");
+  const dreamLabel = document.querySelector(".dream-label");
   const dreamTitle = document.querySelector("#dream-title");
   const dreamCaption = document.querySelector("#dream-caption");
   const dreamStory = document.querySelector("#dream-story");
@@ -70,12 +86,16 @@
     const selected = dreams[dreamName];
     currentDream = dreamName;
 
+    dreamModal.setAttribute("data-dream", dreamName);
+
     dreamImage.src = selected.image;
     dreamImage.alt = selected.alt;
+    dreamImage.setAttribute("data-dream", dreamName);
 
     dreamPop.src = selected.pop;
     dreamPop.setAttribute("data-dream", dreamName);
 
+    dreamLabel.textContent = selected.label;
     dreamTitle.textContent = selected.title;
     dreamCaption.textContent = selected.caption;
     dreamStory.textContent = selected.story;
@@ -85,6 +105,7 @@
 
   function closeDream() {
     overlay.classList.remove("open");
+    dreamModal.removeAttribute("data-dream");
   }
 
   function chooseAnotherDream() {

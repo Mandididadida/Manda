@@ -252,6 +252,13 @@ h1 {
   bottom: -34px;
 }
 
+.dream-pop-decoration[data-dream="blanket"] {
+  width: 195px;
+  left: -62px;
+  bottom: -36px;
+  transform: rotate(-10deg);
+}
+
 .dream-image-wrap {
   margin: 0;
   height: 100%;
@@ -360,6 +367,62 @@ h2 {
   background-color: #edc493;
 }
 
+/* blanket popup: no large image, text fills the whole modal */
+
+.dream-modal[data-dream="blanket"] {
+  display: block;
+  width: min(820px, 88vw);
+  height: auto;
+  min-height: 470px;
+}
+
+.dream-modal[data-dream="blanket"] .dream-image-wrap {
+  display: none;
+}
+
+.dream-modal[data-dream="blanket"] .dream-text {
+  width: 100%;
+  height: 100%;
+  min-height: 470px;
+  padding: 76px 64px 52px;
+  border-radius: 31px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background:
+    radial-gradient(circle at top right, rgba(216, 163, 109, 0.24), transparent 38%),
+    radial-gradient(circle at bottom left, rgba(255, 247, 214, 0.42), transparent 42%),
+    linear-gradient(180deg, rgba(255, 248, 238, 0.98), rgba(246, 229, 207, 0.93));
+}
+
+.dream-modal[data-dream="blanket"] .dream-label {
+  margin-bottom: 10px;
+}
+
+.dream-modal[data-dream="blanket"] h2 {
+  font-size: 42px;
+  margin-bottom: 18px;
+}
+
+.dream-modal[data-dream="blanket"] #dream-caption {
+  font-size: 16px;
+  line-height: 1.55;
+  margin-bottom: 22px;
+}
+
+.dream-modal[data-dream="blanket"] #dream-story {
+  min-height: auto;
+  margin-bottom: 34px;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+.dream-modal[data-dream="blanket"] .button-area {
+  margin-top: auto;
+}
+
 @media (max-width: 900px) {
   .dream-modal {
     width: 88vw;
@@ -385,5 +448,30 @@ h2 {
     width: 125px;
     left: -28px;
     bottom: -26px;
+  }
+
+  .dream-modal[data-dream="blanket"] {
+    width: 88vw;
+    min-height: 520px;
+  }
+
+  .dream-modal[data-dream="blanket"] .dream-text {
+    min-height: 520px;
+    padding: 64px 34px 40px;
+    border-radius: 31px;
+  }
+
+  .dream-modal[data-dream="blanket"] h2 {
+    font-size: 32px;
+  }
+
+  .dream-modal[data-dream="blanket"] #dream-story {
+    font-size: 16px;
+  }
+
+  .dream-pop-decoration[data-dream="blanket"] {
+    width: 145px;
+    left: -34px;
+    bottom: -28px;
   }
 }
