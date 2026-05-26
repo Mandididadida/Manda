@@ -65,8 +65,6 @@
   const dreamCaption = document.querySelector("#dream-caption");
   const dreamStory = document.querySelector("#dream-story");
 
-  let currentDream = "bear";
-
   function clearActiveOutlines() {
     outlinePaths.forEach(function (path) {
       path.classList.remove("is-active");
@@ -84,7 +82,11 @@
 
   function openDream(dreamName) {
     const selected = dreams[dreamName];
-    currentDream = dreamName;
+
+    if (!selected) {
+      console.warn("No dream data found for:", dreamName);
+      return;
+    }
 
     dreamModal.setAttribute("data-dream", dreamName);
 
