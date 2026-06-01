@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fishing Today</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div id="game-wrapper">
+
+        <!-- Main Game Page -->
+        <main id="game-page">
+
+            <!-- 主游戏页面图片 -->
+            <img 
+                src="images/game.jpg" 
+                alt="Fishing game page" 
+                id="game-background"
+            >
+
+            <!-- 左边玩家的分数 -->
+            <div class="score-box left-score">
+                <p><span id="left-score-num">0</span></p>
+            </div>
+
+            <!-- 右边玩家的分数 -->
+            <div class="score-box right-score">
+                <p><span id="right-score-num">0</span></p>
+            </div>
+
+            <!-- 左边 player 的 Reel In 按钮 -->
+            <button id="left-reel" class="reel-btn left-btn">
+                Reel In
+            </button>
+
+            <!-- 右边 player 的 Reel In 按钮 -->
+            <button id="right-reel" class="reel-btn right-btn">
+                Reel In
+            </button>
+
+            <!-- 获胜后出现的 Go Home 按钮 -->
+            <button id="go-home-btn" class="hidden">
+                Go Home
+            </button>
+
+            <!-- 游戏提示文字：Fishing Time 下方、player 上方 -->
+            <div id="message-box">
+                <p id="game-message">Click Reel In to start fishing!</p>
+            </div>
+
+        </main>
+
+        <!-- Reel In 滑入弹窗 -->
+        <section id="result-card" class="hidden">
+            <img 
+                src="images/hook.jpg" 
+                alt="Reel in result" 
+                id="result-image"
+            >
+        </section>
+
+        <!-- Landing Page Overlay -->
+        <section id="landing-overlay">
+            <div id="landing-popup">
+                <h1>Fishing<br>Today</h1>
+                <button id="go-btn">Go!</button>
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>

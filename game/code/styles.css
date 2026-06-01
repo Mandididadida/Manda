@@ -1,0 +1,284 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #bfe8f6;
+    overflow: hidden;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+#game-wrapper {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Main game page */
+#game-page {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Game background image */
+#game-background {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Landing 出现时模糊游戏页面 */
+.blur-game {
+    filter: blur(6px);
+}
+
+/* Score boxes */
+.score-box {
+    position: absolute;
+    z-index: 5;
+    min-width: 30px;
+    padding: 8px 18px;
+    background-color: rgba(255, 255, 255, 0.78);
+    border: 3px solid #2d65c8;
+    border-radius: 18px;
+    color: #16438f;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.18);
+}
+
+.score-box p {
+    margin: 0;
+}
+
+/* 左边鱼箱附近的分数 */
+.left-score {
+    left: 27%;
+    bottom: 17%;
+}
+
+/* 右边鱼箱附近的分数，可以自己调 */
+.right-score {
+    right: 18%;
+    bottom: 6%;
+}
+
+/* Reel In buttons */
+.reel-btn {
+    position: absolute;
+    z-index: 6;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 999px;
+    background-color: #fff6c8;
+    color: #31592f;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 0 6px 0 #d6a94b, 0 10px 14px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease, filter 0.2s ease;
+}
+
+.reel-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 9px 0 #d6a94b, 0 14px 18px rgba(0, 0, 0, 0.22);
+}
+
+.reel-btn:active {
+    transform: translateY(3px);
+    box-shadow: 0 3px 0 #d6a94b, 0 6px 10px rgba(0, 0, 0, 0.18);
+}
+
+/* 左边按钮位置 */
+.left-btn {
+    left: 25%;
+    bottom: 30%;
+}
+
+/* 右边按钮位置 */
+.right-btn {
+    right: 25%;
+    bottom: 22%;
+}
+
+/* 当前不能点的按钮 */
+.inactive-turn {
+    opacity: 0.45;
+    filter: grayscale(80%);
+    pointer-events: none;
+    box-shadow: none;
+}
+
+/* Go Home button */
+#go-home-btn {
+    position: absolute;
+    z-index: 8;
+    left: 50%;
+    bottom: 18%;
+    transform: translateX(-50%);
+    padding: 16px 48px;
+    border: none;
+    border-radius: 999px;
+    background-color: #9bd665;
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    box-shadow: 0 7px 0 #6faf38, 0 12px 18px rgba(0, 0, 0, 0.2);
+}
+
+#go-home-btn:hover {
+    transform: translateX(-50%) translateY(-3px) scale(1.04);
+    box-shadow: 0 10px 0 #6faf38, 0 16px 22px rgba(0, 0, 0, 0.22);
+}
+
+#go-home-btn:active {
+    transform: translateX(-50%) translateY(3px);
+    box-shadow: 0 3px 0 #6faf38, 0 8px 12px rgba(0, 0, 0, 0.18);
+}
+
+/* Message box: Fishing Time 下方，player 上方 */
+#message-box {
+    position: absolute;
+    z-index: 7;
+    left: 50%;
+    top: 45%;
+    transform: translateX(-50%);
+    width: 46%;
+    min-height: 52px;
+    padding: 12px 24px;
+    background-color: rgba(255, 255, 255, 0.82);
+    border: 3px solid rgba(93, 160, 222, 0.75);
+    border-radius: 22px;
+    text-align: center;
+    color: #31592f;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
+}
+
+#game-message {
+    margin: 0;
+}
+
+/* Reel In result card */
+/* 这是滑入滑出的图片弹窗，不再全屏显示 */
+#result-card {
+    position: absolute;
+    z-index: 22;
+    top: 32%;
+    left: 50%;
+    width: 430px;
+    height: 260px;
+    padding: 12px;
+    background-color: rgba(232, 249, 255, 0.92);
+    border: 6px solid rgba(255, 255, 255, 0.95);
+    border-radius: 28px;
+    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    transform: translate(120vw, -50%);
+}
+
+/* 弹窗里的图片 */
+#result-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 20px;
+}
+
+/* 从右边滑入，停留，再从左边滑走 */
+.slide-through {
+    animation: slideThrough 4s ease-in-out forwards;
+}
+
+@keyframes slideThrough {
+    0% {
+        transform: translate(120vw, -50%);
+        opacity: 0;
+    }
+
+    18% {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+
+    70% {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-120vw, -50%);
+        opacity: 0;
+    }
+}
+
+/* Landing overlay */
+#landing-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 30;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(170, 220, 240, 0.45);
+    backdrop-filter: blur(8px);
+}
+
+/* Landing popup */
+#landing-popup {
+    width: 560px;
+    height: 360px;
+    padding: 44px;
+    border-radius: 34px;
+    background-color: rgba(214, 246, 255, 0.86);
+    border: 6px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 22px 40px rgba(0, 0, 0, 0.22);
+    text-align: center;
+}
+
+#landing-popup h1 {
+    margin: 0 0 34px;
+    color: #ffffff;
+    font-size: 76px;
+    line-height: 0.9;
+    letter-spacing: 4px;
+    text-shadow: 0 5px 0 rgba(68, 151, 191, 0.55);
+}
+
+#go-btn {
+    padding: 14px 48px;
+    border: none;
+    border-radius: 999px;
+    background-color: #9bd665;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    box-shadow: 0 7px 0 #6faf38, 0 12px 18px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#go-btn:hover {
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 10px 0 #6faf38, 0 16px 22px rgba(0, 0, 0, 0.22);
+}
+
+#go-btn:active {
+    transform: translateY(3px);
+    box-shadow: 0 3px 0 #6faf38, 0 8px 12px rgba(0, 0, 0, 0.18);
+}
+
+/* JS 用来隐藏元素 */
+.hidden {
+    display: none !important;
+}
