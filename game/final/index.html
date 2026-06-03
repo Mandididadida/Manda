@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fishing Today</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div id="game-wrapper">
+
+        <!-- Main Game Page -->
+        <main id="game-page">
+
+            <!-- 主游戏页面图片 -->
+            <img 
+                src="images/game.jpg" 
+                alt="Fishing game page" 
+                id="game-background"
+            >
+
+            <!-- 左边玩家的分数：老人 -->
+            <div class="score-box left-score">
+                <p><span id="left-score-num">0</span></p>
+            </div>
+
+            <!-- 右边玩家的分数：猫 -->
+            <div class="score-box right-score">
+                <p><span id="right-score-num">0</span></p>
+            </div>
+
+            <!-- 老人的 Reel In 按钮 -->
+            <button id="left-reel" class="reel-btn left-btn">
+                Reel In
+            </button>
+
+            <!-- 猫的 Reel In 按钮 -->
+            <button id="right-reel" class="reel-btn right-btn">
+                Reel In
+            </button>
+
+            <!-- 游戏提示文字 -->
+            <div id="message-box">
+                <p id="game-message">Click Reel In to start fishing!</p>
+            </div>
+
+            <!-- 右上角规则按钮 -->
+            <button id="rules-help-btn" class="hidden">?</button>
+
+        </main>
+
+        <!-- Reel In 滑入弹窗 -->
+        <section id="result-card" class="hidden">
+            <img 
+                src="images/hook.jpg" 
+                alt="Reel in result" 
+                id="result-image"
+            >
+        </section>
+
+        <!-- Landing Page Overlay -->
+        <section id="landing-overlay">
+            <div id="landing-popup">
+                <h1>Fishing<br>Today</h1>
+                <button id="go-btn">Go!</button>
+            </div>
+        </section>
+
+        <!-- Game Rules Overlay -->
+        <section id="rules-overlay" class="hidden">
+            <div id="rules-popup">
+                <h2>How to Play</h2>
+
+                <p>
+                    Two players take turns fishing.
+                </p>
+
+                <p>
+                    On each turn, click <strong>Reel In</strong>.
+                    You may catch <strong>1 fish</strong>, or you may <strong>miss</strong>.
+                </p>
+
+                <p>
+                    After one player reels in, their turn ends.
+                    Then it becomes the other player's turn.
+                </p>
+
+                <p>
+                    The first player to catch <strong>5 fish</strong> wins!
+                </p>
+
+                <button id="start-game-btn">Start Fishing!</button>
+            </div>
+        </section>
+
+        <!-- Winner Overlay -->
+        <section id="winner-overlay" class="hidden">
+            <div id="winner-popup">
+                <h2>Congratulations!</h2>
+
+                <p id="winner-message">
+                    Congratulations! The winner caught 5 fish first and won the game!
+                </p>
+
+                <div id="winner-buttons">
+                    <button id="play-again-btn">Fishing Tomorrow</button>
+                    <button id="portal-btn">Go Home</button>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,442 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #bfe8f6;
+    overflow: hidden;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+#game-wrapper {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Main game page */
+#game-page {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Game background image */
+#game-background {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Landing / rules / winner 出现时模糊游戏页面 */
+.blur-game {
+    filter: blur(6px);
+}
+
+/* =========================
+   SCORE BOXES - FISHING BOBBER
+========================= */
+
+.score-box {
+    position: absolute;
+    z-index: 5;
+    min-width: 58px;
+    width: 58px;
+    height: 58px;
+    padding: 0;
+    border-radius: 50%;
+    border: 4px solid #ffffff;
+    background:
+        linear-gradient(to bottom, #ff5f5f 0%, #ff5f5f 48%, #ffffff 49%, #ffffff 100%);
+    color: #1b4a8e;
+    font-size: 27px;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow:
+        0 7px 15px rgba(19, 88, 120, 0.28),
+        inset 0 2px 0 rgba(255,255,255,0.55);
+    animation: bobberFloat 2.4s ease-in-out infinite;
+}
+
+.score-box p {
+    margin: 0;
+    transform: translateY(2px);
+}
+
+/* 左边鱼箱附近的分数 */
+.left-score {
+    left: 27%;
+    bottom: 17%;
+}
+
+/* 右边鱼箱附近的分数 */
+.right-score {
+    right: 18%;
+    bottom: 6%;
+}
+
+/* =========================
+   REEL IN BUTTONS - TRANSPARENT WATER BLUE
+========================= */
+
+.reel-btn {
+    position: absolute;
+    z-index: 6;
+    padding: 13px 72px 13px 26px;
+    border: 3px solid rgba(255, 255, 255, 0.75);
+    border-radius: 999px;
+    background-color: rgba(190, 235, 255, 0.38);
+    color: #1f5f78;
+    font-size: 21px;
+    font-weight: bold;
+    letter-spacing: 0.4px;
+    box-shadow: none;
+    backdrop-filter: blur(4px);
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease,
+        filter 0.2s ease,
+        background-color 0.2s ease;
+}
+
+/* Reel In 按钮右侧 reel.png 装饰 */
+.reel-btn::after {
+    content: "";
+    z-index: 7;
+    position: absolute;
+    right: -50px;
+    top: 75%;
+    width: 150px;
+    height: 100px;
+    transform: translateY(-50%);
+    background-image: url("images/reel.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    pointer-events: none;
+}
+
+.reel-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+    background-color: rgba(210, 245, 255, 0.52);
+    box-shadow: none;
+}
+
+.reel-btn:active {
+    transform: translateY(2px);
+    box-shadow: none;
+}
+
+/* 左边按钮位置 */
+.left-btn {
+    left: 25%;
+    bottom: 30%;
+}
+
+/* 右边按钮位置 */
+.right-btn {
+    right: 25%;
+    bottom: 22%;
+}
+
+/* 当前不能点的按钮 */
+.inactive-turn {
+    opacity: 0.35;
+    filter: grayscale(85%);
+    pointer-events: none;
+    box-shadow: none;
+}
+
+/* =========================
+   RULES HELP BUTTON
+========================= */
+
+#rules-help-btn {
+    position: absolute;
+    z-index: 10;
+    top: 24px;
+    right: 24px;
+    width: 54px;
+    height: 54px;
+    padding: 0;
+    border: 3px solid rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    background-color: rgba(239, 255, 232, 0.78);
+    color: #31592f;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 1;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
+    backdrop-filter: blur(5px);
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease,
+        opacity 0.2s ease;
+}
+
+#rules-help-btn:hover {
+    transform: scale(1.08);
+    background-color: rgba(239, 255, 232, 0.95);
+}
+
+#rules-help-btn:active {
+    transform: scale(0.96);
+}
+
+/* =========================
+   MESSAGE BOX
+========================= */
+
+#message-box {
+    position: absolute;
+    z-index: 7;
+    left: 50%;
+    top: 45%;
+    transform: translateX(-50%);
+    width: 46%;
+    min-height: 52px;
+    padding: 12px 24px;
+    background-color: rgba(255, 255, 255, 0.82);
+    border: 3px solid rgba(93, 160, 222, 0.75);
+    border-radius: 22px;
+    text-align: center;
+    color: #31592f;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
+}
+
+#game-message {
+    margin: 0;
+}
+
+/* =========================
+   RESULT CARD
+========================= */
+
+#result-card {
+    position: absolute;
+    z-index: 22;
+    top: 32%;
+    left: 50%;
+    width: 430px;
+    height: 260px;
+    padding: 12px;
+    background-color: rgba(232, 249, 255, 0.92);
+    border: 6px solid rgba(255, 255, 255, 0.95);
+    border-radius: 28px;
+    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    transform: translate(120vw, -50%);
+}
+
+#result-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 20px;
+}
+
+/* 从右边滑入，停留，再从左边滑走 */
+.slide-through {
+    animation: slideThrough 4s ease-in-out forwards;
+}
+
+@keyframes slideThrough {
+    0% {
+        transform: translate(120vw, -50%);
+        opacity: 0;
+    }
+
+    18% {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+
+    70% {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-120vw, -50%);
+        opacity: 0;
+    }
+}
+
+/* =========================
+   LANDING + RULES + WINNER OVERLAY
+========================= */
+
+#landing-overlay,
+#rules-overlay,
+#winner-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(170, 220, 240, 0.45);
+    backdrop-filter: blur(8px);
+}
+
+#landing-overlay {
+    z-index: 30;
+}
+
+#rules-overlay {
+    z-index: 31;
+}
+
+#winner-overlay {
+    z-index: 32;
+}
+
+/* =========================
+   LANDING POPUP - LIGHT GREEN VERSION
+========================= */
+
+#landing-popup {
+    width: 560px;
+    height: 360px;
+    padding: 44px;
+    border-radius: 34px;
+    background-color: rgba(239, 255, 232, 0.92);
+    border: 6px solid rgba(255, 255, 255, 0.95);
+    box-shadow: 0 22px 40px rgba(0, 0, 0, 0.22);
+    text-align: center;
+}
+
+#landing-popup h1 {
+    margin: 0 0 34px;
+    color: #31592f;
+    font-size: 76px;
+    line-height: 0.9;
+    letter-spacing: 4px;
+    text-shadow: none;
+}
+
+/* =========================
+   RULES POPUP - LIGHT GREEN VERSION
+========================= */
+
+#rules-popup,
+#winner-popup {
+    width: 620px;
+    min-height: 430px;
+    padding: 42px 54px;
+    border-radius: 34px;
+    background-color: rgba(239, 255, 232, 0.92);
+    border: 6px solid rgba(255, 255, 255, 0.95);
+    box-shadow: 0 22px 40px rgba(0, 0, 0, 0.22);
+    text-align: center;
+    color: #31592f;
+}
+
+#rules-popup h2,
+#winner-popup h2 {
+    margin: 0 0 24px;
+    color: #31592f;
+    font-size: 44px;
+}
+
+#rules-popup p,
+#winner-popup p {
+    margin: 12px 0;
+    font-size: 21px;
+    line-height: 1.45;
+}
+
+#winner-message {
+    margin-top: 30px;
+    margin-bottom: 34px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+/* =========================
+   GO + START + WINNER BUTTONS
+========================= */
+
+#go-btn,
+#start-game-btn,
+#play-again-btn,
+#portal-btn {
+    padding: 14px 48px;
+    border: none;
+    border-radius: 999px;
+    background-color: #9bd665;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    box-shadow: 0 7px 0 #6faf38, 0 12px 18px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#go-btn:hover,
+#start-game-btn:hover,
+#play-again-btn:hover,
+#portal-btn:hover {
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 10px 0 #6faf38, 0 16px 22px rgba(0, 0, 0, 0.22);
+}
+
+#go-btn:active,
+#start-game-btn:active,
+#play-again-btn:active,
+#portal-btn:active {
+    transform: translateY(3px);
+    box-shadow: 0 3px 0 #6faf38, 0 8px 12px rgba(0, 0, 0, 0.18);
+}
+
+#winner-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+#play-again-btn,
+#portal-btn {
+    font-size: 24px;
+    padding: 14px 34px;
+}
+
+/* =========================
+   UTILITIES
+========================= */
+
+.hidden {
+    display: none !important;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes bobberFloat {
+    0% {
+        transform: translateY(0) rotate(-2deg);
+    }
+
+    50% {
+        transform: translateY(-5px) rotate(2deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(-2deg);
+    }
+}
