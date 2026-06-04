@@ -41,6 +41,11 @@ button {
     filter: blur(6px);
 }
 
+/* 手机版 SVG 互动层默认隐藏 */
+#mobile-outline-svg {
+    display: none;
+}
+
 /* =========================
    SCORE BOXES - FISHING BOBBER
 ========================= */
@@ -74,20 +79,19 @@ button {
     transform: translateY(2px);
 }
 
-/* 左边鱼箱附近的分数 */
+/* 桌面版分数位置 */
 .left-score {
     left: 27%;
     bottom: 17%;
 }
 
-/* 右边鱼箱附近的分数 */
 .right-score {
     right: 18%;
     bottom: 6%;
 }
 
 /* =========================
-   REEL IN BUTTONS - TRANSPARENT WATER BLUE
+   DESKTOP REEL IN BUTTONS
 ========================= */
 
 .reel-btn {
@@ -138,19 +142,16 @@ button {
     box-shadow: none;
 }
 
-/* 左边按钮位置 */
 .left-btn {
     left: 25%;
     bottom: 30%;
 }
 
-/* 右边按钮位置 */
 .right-btn {
     right: 25%;
     bottom: 22%;
 }
 
-/* 当前不能点的按钮 */
 .inactive-turn {
     opacity: 0.35;
     filter: grayscale(85%);
@@ -249,7 +250,7 @@ button {
     border-radius: 20px;
 }
 
-/* 从右边滑入，停留，再从左边滑走 */
+/* 桌面版：从右边滑入，停留，再从左边滑走 */
 .slide-through {
     animation: slideThrough 4s ease-in-out forwards;
 }
@@ -305,7 +306,7 @@ button {
 }
 
 /* =========================
-   LANDING POPUP - LIGHT GREEN VERSION
+   POPUPS
 ========================= */
 
 #landing-popup {
@@ -327,10 +328,6 @@ button {
     letter-spacing: 4px;
     text-shadow: none;
 }
-
-/* =========================
-   RULES POPUP - LIGHT GREEN VERSION
-========================= */
 
 #rules-popup,
 #winner-popup {
@@ -367,7 +364,7 @@ button {
 }
 
 /* =========================
-   GO + START + WINNER BUTTONS
+   POPUP BUTTONS
 ========================= */
 
 #go-btn,
@@ -413,6 +410,217 @@ button {
 #portal-btn {
     font-size: 24px;
     padding: 14px 34px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    position: absolute;
+    left: 50%;
+    bottom: 14px;
+    z-index: 18;
+    transform: translateX(-50%);
+
+    padding: 9px 22px;
+    border-radius: 28px;
+
+    text-align: center;
+    color: #31592f;
+    font-size: 13px;
+    font-weight: 700;
+
+    background-color: rgba(239, 255, 232, 0.64);
+    border: 2px solid rgba(255, 255, 255, 0.76);
+    backdrop-filter: blur(7px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+}
+
+.footer p {
+    margin: 0 0 3px;
+}
+
+.footer address {
+    margin: 0 0 3px;
+    font-style: normal;
+}
+
+.footer a {
+    color: #1f5f78;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+   MOBILE VERSION
+========================= */
+
+@media (max-width: 600px) {
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #bfe8f6;
+    }
+
+    #game-wrapper {
+        width: 100vw;
+        height: 100vh;
+        max-width: 430px;
+        margin: 0 auto;
+        background-color: #bfe8f6;
+    }
+
+    #game-page {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border-radius: 0;
+    }
+
+    #game-background {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* 手机版：透明 SVG 互动层，不是可见 iPhone 外框 */
+    #mobile-outline-svg {
+        display: block;
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 11;
+        pointer-events: none;
+    }
+
+    .mobile-outline-path {
+        fill: rgba(255, 255, 255, 0.001);
+        stroke: rgba(255, 247, 214, 0);
+        stroke-width: 7;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        pointer-events: all;
+        cursor: pointer;
+        transition: stroke 220ms ease, filter 220ms ease, opacity 220ms ease;
+    }
+
+    .mobile-outline-path.is-active {
+        stroke: #fff7d6;
+        filter: url(#mobile-soft-glow);
+    }
+
+    .mobile-outline-path.inactive-turn,
+    .mobile-outline-path.disabled-game {
+        pointer-events: none;
+    }
+
+    /* 手机版不显示 Reel In 按钮 */
+    .reel-btn {
+        display: none;
+    }
+
+    .score-box {
+        width: 52px;
+        height: 52px;
+        min-width: 52px;
+        font-size: 24px;
+        z-index: 12;
+    }
+
+    .left-score {
+        left: 7%;
+        bottom: 19%;
+    }
+
+    .right-score {
+        right: 7%;
+        bottom: 12%;
+    }
+
+    #message-box {
+        top: 34%;
+        width: 78%;
+        min-height: 54px;
+        padding: 12px 16px;
+        font-size: 17px;
+        z-index: 13;
+    }
+
+    #rules-help-btn {
+        top: 18px;
+        right: 18px;
+        width: 48px;
+        height: 48px;
+        font-size: 28px;
+        z-index: 14;
+    }
+
+    #result-card {
+        top: 50%;
+        width: 78%;
+        max-width: 320px;
+        height: auto;
+        aspect-ratio: 4 / 5;
+        transform: translate(120vw, -50%);
+    }
+
+    #landing-popup,
+    #rules-popup,
+    #winner-popup {
+        width: 84%;
+        max-width: 340px;
+        min-height: auto;
+        padding: 28px 22px;
+        border-radius: 30px;
+    }
+
+    #landing-popup h1 {
+        font-size: 50px;
+        line-height: 0.92;
+        letter-spacing: 2px;
+    }
+
+    #rules-popup h2,
+    #winner-popup h2 {
+        font-size: 32px;
+    }
+
+    #rules-popup p,
+    #winner-popup p {
+        font-size: 17px;
+        line-height: 1.45;
+    }
+
+    #winner-message {
+        font-size: 20px;
+    }
+
+    #go-btn,
+    #start-game-btn,
+    #play-again-btn,
+    #portal-btn {
+        padding: 12px 24px;
+        font-size: 20px;
+    }
+
+    #winner-buttons {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .footer {
+        bottom: 8px;
+        width: 86%;
+        padding: 7px 14px;
+        font-size: 11px;
+        z-index: 18;
+    }
 }
 
 /* =========================

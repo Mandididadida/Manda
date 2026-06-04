@@ -21,6 +21,9 @@
     const leftReelBtn = document.querySelector('#left-reel');
     const rightReelBtn = document.querySelector('#right-reel');
 
+    const oldManOutline = document.querySelector('#old-man-outline');
+    const catOutline = document.querySelector('#cat-outline');
+
     const leftScoreNum = document.querySelector('#left-score-num');
     const rightScoreNum = document.querySelector('#right-score-num');
 
@@ -29,35 +32,39 @@
     const resultCard = document.querySelector('#result-card');
     const resultImage = document.querySelector('#result-image');
 
+    const isMobile = window.matchMedia('(max-width: 600px)');
+
     const gameData = {
         oldManScore: 0,
         catScore: 0,
         winningScore: 5,
         gameOver: false,
-
-        /* 一开始老人和猫都可以先点 */
         currentTurn: 'both',
 
         mainGameImage: 'images/game.jpg',
+        mobileGameImage: 'iphone/background.png',
 
-        /* 老人点击 Reel In 后滑入显示 */
         oldManReelImage: 'images/hook.jpg',
-
-        /* 猫点击 Reel In 后滑入显示 */
         catReelImage: 'images/cat.jpg',
+
+        mobileOldManReelImage: 'iphone/hook.jpg',
+        mobileCatReelImage: 'iphone/cat.jpg',
 
         missItems: ['a shoe', 'seaweed', 'nothing']
     };
 
     gamePage.classList.add('blur-game');
+    setVersionImages();
 
-    /* 点击 Go 后，先显示规则弹窗 */
+    isMobile.addEventListener('change', function(){
+        setVersionImages();
+    });
+
     goBtn.addEventListener('click', function(){
         landingOverlay.classList.add('hidden');
         rulesOverlay.classList.remove('hidden');
     });
 
-    /* 点击 Start Fishing 后，正式进入游戏，或从规则页返回游戏 */
     startGameBtn.addEventListener('click', function(){
         rulesOverlay.classList.add('hidden');
         gamePage.classList.remove('blur-game');
@@ -68,11 +75,14 @@
             gameData.oldManScore === 0 &&
             gameData.catScore === 0
         ) {
-            gameMessage.textContent = 'The old man or the cat can start fishing!';
+            if (isMobile.matches) {
+                gameMessage.textContent = 'Tap the old man or the cat to start fishing!';
+            } else {
+                gameMessage.textContent = 'The old man or the cat can start fishing!';
+            }
         }
     });
 
-    /* 游戏中点击右上角 ? 可以重新查看规则 */
     rulesHelpBtn.addEventListener('click', function(){
         rulesOverlay.classList.remove('hidden');
         gamePage.classList.add('blur-game');
@@ -86,6 +96,14 @@
         reelIn('cat');
     });
 
+    oldManOutline.addEventListener('click', function(){
+        reelIn('oldMan');
+    });
+
+    catOutline.addEventListener('click', function(){
+        reelIn('cat');
+    });
+
     playAgainBtn.addEventListener('click', function(){
         resetGameToLanding();
     });
@@ -93,6 +111,14 @@
     portalBtn.addEventListener('click', function(){
         window.location.href = '../../index.html';
     });
+
+    function setVersionImages(){
+        if (isMobile.matches) {
+            gameBackground.src = gameData.mobileGameImage;
+        } else {
+            gameBackground.src = gameData.mainGameImage;
+        }
+    }
 
     function reelIn(player){
         if (gameData.gameOver) {
@@ -103,26 +129,58 @@
             return;
         }
 
-        disableBothButtons();
+        disableBothControls();
+        highlightPlayer(player);
 
         if (player === 'oldMan') {
-            resultImage.src = gameData.oldManReelImage;
+            if (isMobile.matches) {
+                resultImage.src = gameData.mobileOldManReelImage;
+            } else {
+                resultImage.src = gameData.oldManReelImage;
+            }
         } else {
-            resultImage.src = gameData.catReelImage;
+            if (isMobile.matches) {
+                resultImage.src = gameData.mobileCatReelImage;
+            } else {
+                resultImage.src = gameData.catReelImage;
+            }
         }
 
         showResultCard();
 
         setTimeout(function(){
+            removeHighlight(player);
             hideResultCard();
             checkFishingResult(player);
         }, 4000);
     }
 
+    function highlightPlayer(player){
+        if (!isMobile.matches) {
+            return;
+        }
+
+        if (player === 'oldMan') {
+            oldManOutline.classList.add('is-active');
+        } else {
+            catOutline.classList.add('is-active');
+        }
+    }
+
+    function removeHighlight(player){
+        if (!isMobile.matches) {
+            return;
+        }
+
+        if (player === 'oldMan') {
+            oldManOutline.classList.remove('is-active');
+        } else {
+            catOutline.classList.remove('is-active');
+        }
+    }
+
     function showResultCard(){
         resultCard.classList.remove('hidden');
-
-        /* 重新触发 animation */
         resultCard.classList.remove('slide-through');
 
         void resultCard.offsetWidth;
@@ -181,6 +239,9 @@
             leftReelBtn.classList.add('inactive-turn');
             rightReelBtn.classList.remove('inactive-turn');
 
+            oldManOutline.classList.add('inactive-turn');
+            catOutline.classList.remove('inactive-turn');
+
             gameMessage.textContent += ' Now it is the cat’s turn.';
         } else {
             gameData.currentTurn = 'oldMan';
@@ -188,13 +249,19 @@
             rightReelBtn.classList.add('inactive-turn');
             leftReelBtn.classList.remove('inactive-turn');
 
+            catOutline.classList.add('inactive-turn');
+            oldManOutline.classList.remove('inactive-turn');
+
             gameMessage.textContent += ' Now it is the old man’s turn.';
         }
     }
 
-    function disableBothButtons(){
+    function disableBothControls(){
         leftReelBtn.classList.add('inactive-turn');
         rightReelBtn.classList.add('inactive-turn');
+
+        oldManOutline.classList.add('inactive-turn');
+        catOutline.classList.add('inactive-turn');
     }
 
     function checkWinner(){
@@ -210,6 +277,10 @@
     function endGame(winnerName){
         leftReelBtn.classList.add('inactive-turn');
         rightReelBtn.classList.add('inactive-turn');
+
+        oldManOutline.classList.add('disabled-game');
+        catOutline.classList.add('disabled-game');
+
         rulesHelpBtn.classList.add('hidden');
 
         gamePage.classList.add('blur-game');
@@ -227,12 +298,19 @@
         leftScoreNum.textContent = '0';
         rightScoreNum.textContent = '0';
 
-        gameBackground.src = gameData.mainGameImage;
+        setVersionImages();
 
-        gameMessage.textContent = 'Click Reel In to start fishing!';
+        if (isMobile.matches) {
+            gameMessage.textContent = 'Tap the old man or the cat to start fishing!';
+        } else {
+            gameMessage.textContent = 'Click Reel In to start fishing!';
+        }
 
         leftReelBtn.classList.remove('inactive-turn', 'hidden');
         rightReelBtn.classList.remove('inactive-turn', 'hidden');
+
+        oldManOutline.classList.remove('inactive-turn', 'disabled-game', 'is-active');
+        catOutline.classList.remove('inactive-turn', 'disabled-game', 'is-active');
 
         rulesHelpBtn.classList.add('hidden');
 
