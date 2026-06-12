@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unfold</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <header class="sr-only">
+        <h1>Unfold: A Childhood Toy Mad Lib Letter</h1>
+    </header>
+
+    <main class="screen">
+
+        <!-- START PAGE -->
+        <section id="startPage" class="madlib-page landing-bg">
+            <h2 class="sr-only">Start Page</h2>
+
+            <button type="button" id="openBtn" aria-label="Open the envelope">
+                UNFOLD
+            </button>
+
+            <a href="../../index.html" class="homeBtn">H<br>O<br>M<br>E</a>
+        </section>
+
+        <!-- FORM PAGE -->
+        <section id="formPage" class="madlib-page open-bg hide">
+            <h2 class="sr-only">Word Form Page</h2>
+
+            <a href="../../index.html" class="homeBtn">H<br>O<br>M<br>E</a>
+
+            <form id="madlibForm">
+                <section class="wordList" aria-label="Mad Lib word list">
+
+                    <section class="wordCol">
+                        <label for="nounOne">Noun</label>
+                        <input type="text" id="nounOne" name="nounOne" required>
+
+                        <label for="nounTwo">Noun</label>
+                        <input type="text" id="nounTwo" name="nounTwo" required>
+
+                        <label for="verbOne">Verb</label>
+                        <input type="text" id="verbOne" name="verbOne" required>
+                    </section>
+
+                    <section class="wordCol">
+                        <label for="verbTwo">Verb</label>
+                        <input type="text" id="verbTwo" name="verbTwo" required>
+
+                        <label for="adjectiveOne">Adjective</label>
+                        <input type="text" id="adjectiveOne" name="adjectiveOne" required>
+
+                        <label for="adjectiveTwo">Adjective</label>
+                        <input type="text" id="adjectiveTwo" name="adjectiveTwo" required>
+                    </section>
+
+                    <section class="wordCol">
+                        <label for="place">Place</label>
+                        <input type="text" id="place" name="place" required>
+
+                        <label for="time">Time</label>
+                        <input type="text" id="time" name="time" required>
+
+                        <label for="touch">Touch / Texture</label>
+                        <input type="text" id="touch" name="touch" required>
+                    </section>
+
+                    <section class="wordCol">
+                        <label for="toyName">Name</label>
+                        <input type="text" id="toyName" name="toyName" required>
+                    </section>
+
+                </section>
+
+                <button type="button" id="backToStart" class="backBtn">BACK</button>
+                <input type="submit" value="NEXT" class="nextBtn">
+            </form>
+        </section>
+
+        <!-- RESULT PAGE -->
+        <section id="resultPage" class="madlib-page result-bg hide">
+            <h2 class="sr-only">Finished Letter Page</h2>
+
+            <a href="../../index.html" class="homeBtn">H<br>O<br>M<br>E</a>
+
+            <article id="finalStory" aria-label="Completed Mad Lib letter">
+                <p>
+                    Hi, do you still remember me?
+                </p>
+
+                <p>
+                    It has been
+                    <span id="storyTime" class="userWord">________</span>
+                    since we last played together. I still remember when you carried me to
+                    <span id="storyPlace" class="userWord">________</span>.
+                    The world felt
+                    <span id="storyAdjectiveOne" class="userWord">________</span>,
+                    and your hands always felt
+                    <span id="storyTouch" class="userWord">________</span>.
+                </p>
+
+                <p>
+                    We used to
+                    <span id="storyVerbOne" class="userWord">________</span>
+                    with a
+                    <span id="storyNounOne" class="userWord">________</span>,
+                    then
+                    <span id="storyVerbTwo" class="userWord">________</span>
+                    under the blanket like it was our own
+                    <span id="storyNounTwo" class="userWord">________</span>.
+                </p>
+
+                <p>
+                    You always said I was your
+                    <span id="storyAdjectiveTwo" class="userWord">________</span>
+                    true love. I did not fully understand it then, but I believed you.
+                </p>
+
+                <p>
+                    I kept every small moment like a tiny treasure. Even if you have grown up,
+                    I hope some part of you still remembers the little friend who loved you first.
+                </p>
+
+                <p>
+                    It is me.<br>
+                    I am
+                    <span id="storyToyName" class="userWord">________</span>.
+                </p>
+            </article>
+
+            <button type="button" id="againBtn" class="againBtn">AGAIN</button>
+        </section>
+
+    </main>
+    <footer class="footer">
+        <p>Designed by Manda</p>
+        <address>
+            Contact: 
+            <a href="mailto:&#115;&#106;&#121;&#115;&#104;&#105;&#064;&#117;&#099;&#100;&#097;&#118;&#105;&#115;&#046;&#101;&#100;&#117;">&#115;&#106;&#121;&#115;&#104;&#105;&#064;&#117;&#099;&#100;&#097;&#118;&#105;&#115;&#046;&#101;&#100;&#117;</a>
+        </address>
+        <a href="../../../index.html" class="back-link">Back to Portal</a>
+    </footer>
+</body>
+</html>

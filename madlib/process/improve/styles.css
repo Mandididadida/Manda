@@ -1,0 +1,330 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: "Gaegu", "Chewy", "Comic Sans MS", Arial, sans-serif;
+    background: #dfeaf8;
+    overflow: hidden;
+}
+
+.screen {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.madlib-page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+/* Background images */
+.landing-bg {
+    background-image: url("images/landing.jpg");
+}
+
+.open-bg {
+    background-image: url("images/open.jpg");
+}
+
+.result-bg {
+    background-image: url("images/result.jpg");
+}
+
+/* Utility */
+.hide {
+    display: none;
+}
+
+.sr-only {
+    position: absolute;
+    left: -9999px;
+}
+
+/* Type */
+button,
+input,
+label,
+a {
+    font-family: "Gaegu", "Chewy", "Comic Sans MS", Arial, sans-serif;
+}
+
+/* Home link */
+.homeBtn {
+    position: absolute;
+    right: 28px;
+    top: 135px;
+    color: #6f85a8;
+    text-decoration: none;
+    font-size: 24px;
+    line-height: 1.25;
+    z-index: 80;
+}
+
+.homeBtn:hover {
+    color: #415b82;
+}
+
+/* Open button */
+#openBtn {
+    position: absolute;
+    left: 50%;
+    top: 31%;
+    transform: translate(-50%, -50%) rotate(2deg);
+    display: block;
+    border: none;
+    background: transparent;
+    color: #6f85a8;
+    font-size: 58px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    z-index: 100;
+}
+
+#openBtn:hover {
+    color: #415b82;
+    transform: translate(-50%, -50%) rotate(-2deg) scale(1.06);
+}
+
+/* Visible buttons */
+.backBtn,
+.nextBtn,
+.againBtn {
+    position: absolute;
+    display: block;
+    min-width: 95px;
+    height: 42px;
+    padding: 4px 18px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.58);
+    color: #5d759b;
+    border: 2px solid rgba(111, 133, 168, 0.45);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(93, 117, 155, 0.12);
+    z-index: 100;
+}
+
+.backBtn:hover,
+.nextBtn:hover,
+.againBtn:hover {
+    background: rgba(255, 255, 255, 0.82);
+    color: #415b82;
+    transform: scale(1.04);
+}
+
+/* Form page buttons */
+.backBtn {
+    left: 30%;
+    bottom: 13%;
+}
+
+.nextBtn {
+    right: 30%;
+    bottom: 13%;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+/* Result page button */
+.againBtn {
+    right: 28%;
+    bottom: 10%;
+}
+
+/* Form layout */
+form {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+}
+
+/*
+   Word list position:
+   This is placed on the pale blue open letter paper.
+*/
+.wordList {
+    position: absolute;
+    top: 15%;
+    left: 52%;
+    transform: translateX(-50%);
+    width: 30%;
+    height: 40%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 16px;
+    row-gap: 0;
+    z-index: 20;
+}
+
+.wordCol {
+    width: 100%;
+}
+
+label {
+    display: block;
+    margin-bottom: 2px;
+    color: #6f85a8;
+    font-size: 18px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+input[type="text"] {
+    display: block;
+    width: 100%;
+    height: 28px;
+    margin-bottom: 10px;
+    padding: 2px 7px;
+    border: none;
+    border-bottom: 2px solid rgba(111, 133, 168, 0.55);
+    border-radius: 0;
+    background: rgba(255, 255, 255, 0.22);
+    color: #415b82;
+    font-size: 20px;
+}
+
+input[type="text"]:focus {
+    border: 2px dashed #9bb2d3;
+    outline: none;
+    background: rgba(255, 255, 255, 0.58);
+}
+
+/*
+   Result story position:
+   This is placed on the large vertical letter paper.
+*/
+#finalStory {
+    position: absolute;
+    left: 39%;
+    top: 20%;
+    width: 30%;
+    height: 80%;
+    color: #5d759b;
+    font-size: 22px;
+    line-height: 1.18;
+    z-index: 20;
+    overflow: hidden;
+}
+
+#finalStory p {
+    margin: 0 0 12px 0;
+}
+
+.userWord {
+    color: #415b82;
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+}
+
+/* Mobile layout */
+@media only screen and (max-width: 700px) {
+    .landing-bg {
+        background-image: url("images/landingphone.jpg");
+    }
+
+    .open-bg {
+        background-image: url("images/openphone.jpg");
+    }
+
+    .result-bg {
+        background-image: url("images/resultphone.jpg");
+    }
+
+    .homeBtn {
+        right: 14px;
+        top: 90px;
+        font-size: 18px;
+    }
+
+    #openBtn {
+        top: 22%;
+        font-size: 40px;
+    }
+
+    /*
+       Phone form:
+       Positioned on the vertical open letter paper.
+    */
+    .wordList {
+        top: 18%;
+        left: 50%;
+        width: 66%;
+        height: 58%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 16px;
+        row-gap: 0;
+    }
+
+    label {
+        font-size: 14px;
+        margin-bottom: 1px;
+    }
+
+    input[type="text"] {
+        height: 22px;
+        margin-bottom: 7px;
+        padding: 1px 5px;
+        font-size: 15px;
+    }
+
+    .backBtn,
+    .nextBtn,
+    .againBtn {
+        min-width: 78px;
+        height: 34px;
+        padding: 2px 12px;
+        border-radius: 18px;
+        font-size: 18px;
+    }
+
+    .backBtn {
+        left: 17%;
+        bottom: 8%;
+    }
+
+    .nextBtn {
+        right: 17%;
+        bottom: 8%;
+    }
+
+    .againBtn {
+        right: 16%;
+        bottom: 7%;
+    }
+
+    /*
+       Phone result:
+       Centered on the vertical result letter paper.
+    */
+    #finalStory {
+        left: 17%;
+        top: 14%;
+        width: 66%;
+        height: 72%;
+        font-size: 17px;
+        line-height: 1.12;
+    }
+
+    #finalStory p {
+        margin-bottom: 8px;
+    }
+}
